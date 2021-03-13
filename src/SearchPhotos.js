@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Unsplash, { toJson } from "unsplash-js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+
+const element = <FontAwesomeIcon icon={faCamera} />;
+const apiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
 
 const unsplash = new Unsplash({
-  accessKey: "kXRM6YL3YNfi1MST9P0yeSOjOF5YTVGGqrANl1eEEPg",
+  accessKey: apiKey,
 });
 
 export default function SearchPhotos() {
@@ -24,13 +29,13 @@ export default function SearchPhotos() {
       <form className="form" onSubmit={searchPhotos}>
         <label className="label" htmlFor="query">
           {" "}
-          📷
+          {element}
         </label>
         <input
           type="text"
           name="query"
           className="input"
-          placeholder={`Try "dog" or "apple"`}
+          placeholder={`Try "cats" or "dogs" or anything you like.`}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
